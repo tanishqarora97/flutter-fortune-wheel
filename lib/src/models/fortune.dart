@@ -11,6 +11,8 @@ class Fortune extends Equatable {
     this.priority = 1,
     this.icon,
     this.textStyle,
+    this.isGift,
+    this.link,
   })  : assert(priority >= 0),
         assert(titleName != null || icon != null);
 
@@ -33,21 +35,29 @@ class Fortune extends Equatable {
   ///text style of Lucky value title
   final TextStyle? textStyle;
 
-  @override
-  List<Object?> get props => [id, titleName, priority, backgroundColor, icon];
+  final bool? isGift;
 
-  Fortune copyWith({
-    String? titleName,
-    Color? backgroundColor,
-    int? priority,
-    Widget? icon,
-  }) {
+  final String? link;
+
+  @override
+  List<Object?> get props =>
+      [id, titleName, priority, backgroundColor, icon, isGift, link];
+
+  Fortune copyWith(
+      {String? titleName,
+      Color? backgroundColor,
+      int? priority,
+      Widget? icon,
+      bool? isGift,
+      String? link}) {
     return Fortune(
       id: id,
       titleName: titleName ?? this.titleName,
       backgroundColor: backgroundColor ?? this.backgroundColor,
       priority: priority ?? this.priority,
       icon: icon ?? this.icon,
+      isGift: isGift ?? this.isGift,
+      link: link ?? this.link,
     );
   }
 }
